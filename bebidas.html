@@ -90,57 +90,87 @@
         .producto:hover p {
             color: green;
         }
+/* Estilos para el modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%; /* Ajustamos el ancho del modal */
+    max-width: 400px; /* Ancho máximo */
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    padding: 0; /* Sin padding */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    max-height: 70%; /* Ajustamos la altura máxima */
+    overflow: hidden; /* Evitamos que el contenido sobrepase el modal */
+}
 
-        /* Estilos para el modal */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 999;
-            left: 50%;
-            top: 50%;
-            transform: translate(-45%, -45%);
-            width: 36%; /* Ajustamos el tamaño para que sea más pequeño */
-            background-color: rgba(0, 0, 0, 0.8);
-            justify-content: center;
-            align-items: center;
-            padding: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
-        }
+/* Modal content */
+.modal-content {
+    background-color: #fff;
+    border-radius: 10px;
+    width: 100%;
+    height: 100%; /* Aseguramos que el contenido ocupe toda la altura del modal */
+    position: relative;
+    display: flex;
+    justify-content: center; /* Centramos la imagen horizontalmente */
+    align-items: center; /* Centramos la imagen verticalmente */
+    overflow: hidden; /* Recortar el contenido si es más grande */
+    padding: 0; /* Eliminamos padding del contenido */
+}
 
-        .modal-content {
-            background-color: #fff;
-            padding: 15px;
-            border-radius: 10px;
-            width: 100%;
-            text-align: center;
-            position: relative;
-        }
+/* Ocultamos cualquier tipo de texto o información dentro del modal */
+.modal-content *:not(img):not(.close) {
+    display: none; /* Ocultamos todo lo que no sea la imagen y el botón de cerrar (X) */
+}
 
-        .modal-content img {
-            max-width: 100%;
-            height: auto;
-            transition: transform 0.2s ease;
-        }
+/* Imagen dentro del modal */
+.modal-content img {
+    max-width: 100%;
+    max-height: 100%; /* Aseguramos que la imagen no se salga del contenedor */
+    object-fit: contain; /* Ajustamos la imagen para que se vea completa y centrada */
+    transition: transform 0.2s ease;
+}
 
-        .modal-content img:hover {
-            transform: scale(1.05); /* Efecto hover más ligero */
-        }
+/* Efecto hover en la imagen */
+.modal-content img:hover {
+    transform: scale(1.05); /* Efecto hover más ligero */
+}
 
-        .close {
-            position: absolute;
-            top: 5px; /* Ajustamos para que esté dentro del recuadro */
-            right: 10px;
-            font-size: 25px;
-            color: #090101;
-            cursor: pointer;
-        }
+/* Botón de cerrar */
+.close {
+    position: absolute;
+    top: 10px; /* Aseguramos que la "X" esté dentro del recuadro */
+    right: 10px;
+    font-size: 25px;
+    color: #090101;
+    cursor: pointer;
+    z-index: 1001; /* Aseguramos que la "X" esté por encima del contenido */
+}
 
-        /* Estilos para la barra de navegación */
-        .navbar {
-            position: relative;
-            z-index: 1001;
-        }
+/* Media queries para ajustar en pantallas pequeñas */
+@media (max-width: 768px) {
+    .modal {
+        width: 100%; /* Ancho completo en pantallas pequeñas */
+        max-height: 80%; /* Ajustamos la altura en pantallas pequeñas */
+    }
+
+    .modal-content {
+        height: auto;
+        max-height: 100%; /* Aseguramos que el contenido no se desborde */
+    }
+
+    .close {
+        top: 15px; /* Ajustamos la posición de la "X" para pantallas pequeñas */
+        right: 15px;
+    }
+}
+
     </style>
 </head>
 <body>
