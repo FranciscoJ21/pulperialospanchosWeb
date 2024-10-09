@@ -98,7 +98,7 @@
     z-index: 999;
     left: 50%;
     top: 50%;
-    transform: translate(-45%, -45%);
+    transform: translate(-50%, -50%);
     width: 90%; /* Cambiamos el ancho al 90% para pantallas pequeñas */
     max-width: 450px; /* Ancho máximo para pantallas más grandes */
     background-color: rgba(0, 0, 0, 0.8);
@@ -108,7 +108,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     max-height: 90%; /* Limitar la altura del modal para evitar desbordamiento */
-    overflow-y: auto; /* Agregar scroll si el contenido es demasiado largo */
+    overflow-y: hidden; /* Deshabilitar scroll */
 }
 
 /* Modal content */
@@ -117,13 +117,18 @@
     padding: 15px;
     border-radius: 10px;
     width: 100%;
+    height: 100%; /* Para asegurar que el contenido ocupe toda la altura del modal */
     text-align: center;
     position: relative;
+    overflow: hidden; /* Recortar el contenido si es más grande */
 }
 
 /* Imagen dentro del modal */
 .modal-content img {
-    max-width: 100%;
+    width: 100%; /* Asegurar que la imagen ocupe todo el ancho */
+    height: auto;
+    max-height: 300px; /* Limitar la altura de la imagen al tamaño que mencionas en verde */
+    object-fit: cover; /* Recorta la imagen en caso de que sea más grande */
     transition: transform 0.2s ease;
 }
 
@@ -152,7 +157,6 @@
 @media (max-width: 768px) {
     .modal {
         width: 100%; /* Ancho completo en pantallas pequeñas */
-     
         top: 0;
         left: 0;
         transform: none; /* Quitamos el translate */
@@ -160,8 +164,8 @@
     }
 
     .modal-content {
-     
-        max-height: 100%; /* Aseguramos que el contenido no se desborde */
+        height: auto;
+        max-height: 300px; /* Limitar la altura en pantallas pequeñas */
     }
 
     .close {
@@ -169,6 +173,7 @@
         right: 15px;
     }
 }
+
 
     </style>
 </head>
