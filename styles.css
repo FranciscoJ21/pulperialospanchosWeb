@@ -1,0 +1,1223 @@
+/* Estilo general */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Barra de navegación */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fbfbfa;
+    padding: 10px 15px;
+    position: relative;
+    z-index: 1000;
+}
+
+/* Logo y texto alineados horizontalmente */
+.logo-text {
+    display: flex;
+    align-items: center;
+}
+
+.logo-text img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+/* Nombre de la tienda con gradiente y animaciones */
+.store-name {
+    font-size: 1.8em;
+    font-weight: bold;
+    background: linear-gradient(45deg, #f093fb, #f5576c, #4facfe, #00f2fe);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: pulse 2s infinite, moveSides 3s infinite;
+}
+
+/* Animación del nombre de la tienda */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Nueva animación para mover el texto de lado a lado */
+@keyframes moveSides {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(15px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* Menú */
+.menu {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    margin: 0 10px;
+    position: relative;
+}
+
+.menu a {
+    color: rgb(9, 1, 1);
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.menu a:hover {
+    background-color: green;
+}
+
+/* Submenú */
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: green;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+
+.dropdown:hover .submenu {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.submenu li {
+    width: 150px;
+}
+
+.submenu a {
+    padding: 10px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.submenu a:hover {
+    background-color: #f0f3f3;
+}
+
+
+/* Carrusel de imágenes */
+.carousel {
+    position: relative;
+    max-width: 1270px;
+   
+    margin: 20px auto;
+    overflow: hidden;
+}
+
+.carousel-container {
+    display: flex;
+    width: 100%;
+   
+}
+
+.slide {
+    flex-shrink:0;
+    width: 100%;
+  
+}
+
+.slide img {
+    max-width: 100%;
+    
+    margin: auto;
+    display: block;
+    object-fit: contain;
+    background-color: #f0f0f0;
+}
+
+/* Estilo para las categorías */
+.categories {
+    text-align: center;
+   
+}
+
+.category-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.category-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    padding: 10px;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer; /* Añadir un cursor de mano al pasar el ratón */
+}
+
+.category-item img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%; /* Imagen circular */
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.category-item span {
+    margin-top: 10px;
+    font-size: 1.2em;
+    color: #333;
+    transition: color 0.4s ease;
+}
+
+.category-item a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Nueva animación al pasar el cursor sobre la categoría */
+.category-item:hover {
+    border: 10px solid green; /* Cambia el borde a verde */
+    transform: translateY(-10px) scale(1.05); /* Eleva la categoría y la agranda */
+    box-shadow: 0 15px 25px rgba(0, 128, 0, 0.2); /* Sombra más profunda */
+}
+
+.category-item:hover img {
+    transform: scale(1.2) rotate(10deg); /* Zoom y ligera rotación */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Sombra en la imagen */
+}
+
+.category-item:hover span {
+    color: green; /* Cambia el color del texto al pasar el cursor */
+}
+
+.category-item:hover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 128, 0, 0.1); /* Fondo verde translúcido */
+    z-index: -1;
+    opacity: 1;
+}
+
+/* Nueva animación interactiva */
+@keyframes bounce {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Aplicar la animación interactiva */
+.category-item:hover {
+    animation: bounce 0.6s ease-in-out; /* Efecto de rebote */
+}
+
+/* Productos: estilo similar */
+.product-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.product-item img {
+    width: 120px;
+    height: 120px;
+    transition: transform 0.3s ease;
+    border-radius: 10px;
+}
+
+.product-item span {
+    margin-top: 15px;
+    font-size: 1.1em;
+    color: #333;
+    transition: color 0.4s ease;
+}
+
+.product-item:hover {
+    transform: translateY(-10px) scale(1.05); /* Desplazamiento y zoom */
+    box-shadow: 0 20px 30px rgba(0, 128, 0, 0.15); /* Sombra más profunda */
+}
+
+.product-item:hover img {
+    transform: scale(1.15) rotate(-5deg); /* Zoom y ligera rotación */
+}
+
+.product-item:hover span {
+    color: darkgreen; /* Cambiar color del texto */
+}
+
+.product-item:hover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 128, 0, 0.05); /* Fondo translúcido verde */
+    z-index: -1;
+    opacity: 1;
+}
+
+
+/* Sección de información sobre Pulpería Los Panchos */
+.info-section {
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px;
+    background-color: #68af4c;
+}
+
+.info-section h2 {
+    color: green;
+    font-size: 2em;
+}
+
+.info-section p {
+    font-size: 1.2em;
+    color: #333;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.info-section .highlight {
+    color: green;
+    font-weight: bold;
+}
+/* Estilo para la sección de categorías animadas */
+.categories {
+    position: relative;
+    overflow: hidden;
+    height: 400px; /* Ajusta la altura según necesites */
+    width: 100%;
+}
+
+.category-slider {
+    display: flex;
+    justify-content: space-between;
+    animation: scrollCategories 20s linear infinite;
+}
+
+@keyframes scrollCategories {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.category-item {
+    flex-shrink: 0;
+    width: 200px; /* Ajusta el ancho según necesites */
+    margin-right: 20px;
+    text-align: center;
+}
+.animated-category-title {
+    font-size: 2.5em;
+    color: green;
+    animation: pulse 2s infinite; /* Reutilizamos la animación pulse */
+    transition: color 0.4s ease;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+.animated-category-title {
+    font-size: 2.5em;
+    color: green;
+    transition: transform 0.4s ease, color 0.4s ease;
+}
+
+.animated-category-title:hover {
+    transform: scale(1.5); /* Aumenta el tamaño al pasar el ratón */
+    color: darkgreen; /* Cambia ligeramente el color */
+}
+
+/* Estilo general para la sección Sobre Nosotros */
+.about-us-section {
+    padding: 50px;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+
+.about-block {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.5s ease-in-out;
+    border-top: 4px solid #28a745; /* Verde */
+    flex: 1 1 calc(50% - 40px);
+    box-sizing: border-box;
+    min-width: 300px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Animación cuando pasa el cursor - más interacción */
+.about-block:hover {
+    transform: translateY(-15px) scale(1.05); /* Más elevación y un leve zoom */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Más sombra al pasar el cursor */
+    border-color: #218838; /* Cambiar a un verde más oscuro */
+    transition: all 0.4s ease-in-out;
+}
+
+.about-block:hover h2 {
+    color: #218838; /* Cambiar el color del título a verde más oscuro */
+}
+
+.about-block h2 {
+    font-size: 2em;
+    margin-bottom: 15px;
+    color: #28a745; /* Títulos en verde */
+    text-align: center;
+    opacity: 0;
+    transform: translateX(-100%); /* Inicialmente fuera de la vista, a la izquierda */
+    transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+}
+
+.about-block.show h2 {
+    transform: translateX(0); /* El título se desliza hacia su posición original */
+    opacity: 1; /* Se vuelve visible */
+}
+
+.about-block p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: #333;
+    text-align: center;
+}
+
+/* Efecto de fondo verde al pasar el cursor */
+.about-block::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(40, 167, 69, 0.1); /* Verde suave como fondo */
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.about-block:hover::before {
+    opacity: 1; /* Mostrar el fondo verde suave cuando se hace hover */
+}
+
+/* Animaciones al hacer scroll */
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animación personalizada de deslizamiento para los bloques */
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Añadir un retraso en la animación para cada bloque */
+#description {
+    animation: slideIn 0.6s ease-out forwards;
+}
+
+#mission {
+    animation: slideIn 0.8s ease-out forwards;
+}
+
+#vision {
+    animation: slideIn 1s ease-out forwards;
+}
+
+#values {
+    animation: slideIn 1.2s ease-out forwards;
+}
+
+#principles {
+    animation: slideIn 1.4s ease-out forwards;
+}
+
+/* Estilo para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .about-block {
+        flex: 1 1 100%;
+        margin-bottom: 20px;
+    }
+}
+
+/* NUEVA ANIMACIÓN PARA EL TÍTULO PRINCIPAL DE LA PÁGINA */
+.page-title {
+    text-align: center; /* Centrar el texto */
+    font-size: 2.5em; /* Fuente ligeramente más pequeña */
+    color: #28a745; /* Verde */
+    margin-bottom: 50px;
+    opacity: 0;
+    animation: fadeZoomIn 1.5s ease-out forwards; /* Nueva animación */
+    letter-spacing: 1px; /* Espaciado de letras */
+    position: relative;
+    margin-top: 20px;
+    width: 100%; /* Asegurar que el título ocupe todo el ancho */
+    height: auto;
+}
+
+/* Nueva animación de zoom y fade */
+@keyframes fadeZoomIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.8); /* Reducido inicialmente */
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1); /* Zoom suave hasta su tamaño original */
+    }
+}
+
+/* Subrayado animado */
+.page-title::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 4px;
+    background-color: #28a745; /* Verde */
+    margin: 10px auto;
+    transition: width 0.5s ease; /* Efecto de expansión */
+}
+
+.page-title:hover::after {
+    width: 100%; /* Subrayado animado al pasar el cursor */
+}
+
+/* contacto */
+/* General layout */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Estilo de categorías */
+.categories {
+    margin: 20px;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Mantener 4 categorías en fila */
+    gap: 20px;
+}
+
+.category-item {
+    text-align: center;
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+.category-item img {
+    max-width: 100px;
+    height: auto;
+}
+
+/* Contenedor de información y contacto al lado */
+.info-contact-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+    margin: 20px;
+    gap: 20px;
+}
+
+/* Información sobre Pulpería Los Panchos */
+.info-section {
+    flex: 1;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+}
+
+/* Sección de contacto */
+/* General layout */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Estilo de categorías */
+.categories {
+    margin: 20px;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Mantener 4 categorías en fila */
+    gap: 20px;
+}
+
+.category-item {
+    text-align: center;
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+.category-item img {
+    max-width: 100px;
+    height: auto;
+}
+
+/* Contenedor de información y contacto al lado */
+.info-contact-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+    margin: 20px;
+    gap: 20px;
+}
+
+/* Información sobre Pulpería Los Panchos */
+.info-section {
+    flex: 1;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    transition: transform 0.3s ease-in-out; /* Transición suave al hacer hover */
+}
+
+.highlight {
+    font-weight: bold;
+    color: #333;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out; /* Añadir transición para color y escala */
+}
+
+.highlight:hover {
+    color: #005baa; /* Cambia el color del texto al pasar el cursor */
+    transform: scale(1.05); /* Agranda ligeramente el texto al pasar el cursor */
+}
+
+/* Sección de contacto */
+.contact-section {
+    flex: 0.4;
+    background-color: #68af4c; /* Color azul */
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out; /* Añadimos transición */
+}
+
+.contact-section:hover {
+    transform: scale(1.05); /* Agranda la tarjeta de contacto al pasar el cursor */
+}
+
+/* Animaciones de hover */
+.info-section:hover {
+    transform: scale(1.02); /* Agranda ligeramente la caja de texto al pasar el cursor */
+}
+
+/* Otros estilos */
+.contact-section h2 {
+    margin-bottom: 15px;
+}
+
+.contact-section p {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+.contact-section p strong {
+    font-weight: bold;
+}
+
+/* Adaptación responsiva */
+@media (max-width: 900px) {
+    .info-contact-wrapper {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 600px) {
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr); /* Dos categorías en fila en pantallas pequeñas */
+    }
+}
+/* pie */
+/* Estilo del Footer */
+.footer {
+    background-color: #68af4c; /* Fondo azul */
+    color: white; /* Texto en color blanco */
+    padding: 10px 0; /* Espaciado vertical */
+    text-align: center; /* Centrar el texto */
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto; /* Centra el contenido horizontalmente */
+    padding: 0 20px; /* Añade un poco de espacio a los lados */
+}
+
+.footer-content p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.footer-content strong {
+    font-weight: bold;
+}
+
+/* Ajuste para pantallas pequeñas */
+@media (max-width: 600px) {
+    .footer-content {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+/* Ajuste para dispositivos móviles pequeños */
+@media (max-width: 600px) {
+    .navbar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar .menu {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .carousel img {
+        width: 100%;
+        height: auto;
+    }
+
+    .category-grid {
+        grid-template-columns: 1fr; /* Mostrar una categoría por fila en pantallas pequeñas */
+    }
+
+    .info-contact-wrapper {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+/* Ajustes para la página en general */
+
+
+/* Ajuste de categorías */
+.categories {
+    margin: 20px auto;
+    padding: 0 10px;
+    max-width: 1200px; /* Limitar el ancho máximo */
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas para todas las pantallas */
+    gap: 10px; /* Espacio entre las categorías */
+}
+
+.category-item {
+    text-align: center;
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+.category-item img {
+    max-width: 100%; /* Ajustar el ancho de la imagen al contenedor */
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.category-item p {
+    margin: 0;
+    font-size: 14px; /* Ajustar el tamaño de la fuente para que se vea bien en pantallas pequeñas */
+}
+
+/* RESPONSIVE DESIGN - Ajustes para pantallas pequeñas */
+@media (max-width: 600px) {
+    .category-grid {
+        grid-template-columns: repeat(4, 1fr); /* Mantener 4 columnas en pantallas pequeñas */
+        gap: 5px; /* Reducir el espacio entre las categorías */
+    }
+
+    .category-item {
+        padding: 5px; /* Reducir el padding para que las categorías no ocupen tanto espacio */
+    }
+
+    .category-item img {
+        max-width: 50px; /* Reducir el tamaño de las imágenes en pantallas pequeñas */
+    }
+
+    .category-item p {
+        font-size: 12px; /* Reducir el tamaño del texto en pantallas pequeñas */
+    }
+}
+
+
+/* Ajustes de la información y contacto */
+.info-contact-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 20px auto;
+    padding: 0 10px;
+    gap: 20px;
+    max-width: 1200px; /* Limitar el ancho máximo */
+}
+
+.info-section {
+    flex: 1;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+.contact-section {
+    flex: 0.4;
+    background-color: #68af4c;
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+/* Estilo del texto en el footer */
+.footer {
+    background-color: #68af4c;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-content p {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* RESPONSIVE DESIGN - Ajustes para pantallas pequeñas */
+@media (max-width: 900px) {
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas medianas */
+    }
+
+    .info-contact-wrapper {
+        flex-direction: column; /* Colocar info y contacto en columna */
+        gap: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    .category-grid {
+        grid-template-columns: 1fr; /* 1 columna en pantallas pequeñas */
+    }
+
+    .info-contact-wrapper {
+        flex-direction: column;
+        padding: 0 10px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .navbar .menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .navbar .menu li {
+        margin: 5px 0;
+    }
+
+    .carousel img {
+        width: 100%;
+    }
+}
+/* Ajuste de categorías */
+.categories {
+    margin: 20px auto;
+    padding: 0 10px;
+    max-width: 1200px; /* Limitar el ancho máximo */
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas en pantallas grandes */
+    gap: 20px; /* Espacio entre categorías */
+}
+
+.category-item {
+    text-align: center;
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+.category-item img {
+    max-width: 80px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.category-item p {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* RESPONSIVE DESIGN - Ajustes para pantallas pequeñas */
+@media (max-width: 600px) {
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas pequeñas */
+        gap: 10px; /* Reducir el espacio entre las categorías */
+    }
+
+    .category-item {
+        padding: 10px;
+    }
+
+    .category-item img {
+        max-width: 60px; /* Reducir el tamaño de las imágenes en pantallas pequeñas */
+    }
+
+    .category-item p {
+        font-size: 12px; /* Ajustar el tamaño del texto para que se vea bien en pantallas pequeñas */
+    }
+}
+/* Estilos generales para la barra de navegación */
+.store-name {
+    font-size: 1.3em; /* Tamaño de texto ajustado para pantallas pequeñas */
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Estilos para el menú hamburguesa en pantallas pequeñas */
+@media (max-width: 768px) {
+ .menu {
+    display: none; /* El menú estará oculto por defecto */
+    flex-direction: column;
+    position: absolute;
+    top: 100%; /* Se ajusta justo debajo de la barra de navegación */
+    left: 0;
+    width: 100%;
+    background-color: transparent; /* Cambia el fondo a transparente cuando esté oculto */
+    z-index: 999;
+    padding: 0; /* Elimina el padding por defecto */
+    transition: max-height 0.3s ease-in-out; /* Añade transición suave */
+    max-height: 0; /* Oculto por defecto */
+    overflow: hidden; /* Asegura que el contenido del menú no se desborde */
+}
+
+.menu.active {
+    display: flex; /* Muestra el menú cuando se le da clic al ícono */
+    max-height: 400px; /* Define la altura máxima cuando el menú está abierto */
+    background-color: #68af4c; /* Solo muestra el color de fondo cuando está activo */
+    padding: 10px 0; /* Añade el padding solo cuando está abierto */
+}
+
+.menu-icon {
+    display: block;
+    cursor: pointer;
+    position: absolute; /* Elimina el movimiento flotante */
+    top: 50%; /* Centrado verticalmente */
+    right: 10px; /* Posicionado a la derecha */
+    transform: translateY(-50%); /* Centra el ícono verticalmente dentro de la barra */
+    z-index: 8000;
+}
+
+/* Estilo del ícono de menú hamburguesa */
+.menu-icon div {
+    width: 25px; /* Ajusta el tamaño del ícono */
+    height: 3px;
+    background-color: #000; /* Color del ícono en negro */
+    margin: 4px 0;
+}
+
+.navbar {
+    justify-content: space-between; /* Mantiene el logo y el ícono separados */
+    align-items: center;
+    flex-wrap: nowrap; /* Evita que se muevan los elementos */
+    height: 60px; /* Altura fija de la barra de navegación */
+    position: relative;
+}
+
+.logo-text {
+    flex-grow: 1; /* Asegura que el texto de la tienda ocupe el espacio suficiente */
+    display: flex;
+    align-items: center;
+}
+
+.menu li {
+    margin: 9px 0; /* Ajusta el espacio entre los elementos del menú */
+    text-align: center; /* Centra los elementos del menú */
+}
+
+.menu a {
+    color: black; /* Color del texto de los enlaces */
+    font-size: 1.2em;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: color 0.3s ease-in-out;
+}
+
+}
+/* Estilos para la nueva sección del footer */
+.footer-info {
+    background-color: #f4f4f4;
+    padding: 30px 0;
+    border-top: 1px solid #ddd;
+    animation: fadeInFooter 1s ease-in-out; /* Animación para la aparición del footer */
+}
+
+.footer-columns {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-column {
+    width: 22%; /* Ajustamos este tamaño más adelante en móviles */
+    padding: 10px;
+    animation: fadeInColumn 1s ease-in-out;
+}
+
+.footer-column h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #333;
+    border-bottom: 2px solid #0044cc;
+    display: inline-block;
+    padding-bottom: 5px;
+    transition: all 0.3s ease;
+}
+
+.footer-column h3:hover {
+    color: #0044cc;
+    border-color: #555;
+}
+
+.footer-column p, .footer-column li {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #555;
+    transition: color 0.3s ease;
+}
+
+.footer-column p:hover, .footer-column li:hover {
+    color: #0044cc;
+}
+
+/* Para las listas que no son de redes sociales */
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li a {
+    color: #555;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+    color: #0044cc;
+}
+
+.footer-column i {
+    margin-right: 5px;
+}
+
+/* Redes Sociales */
+.social-icons {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.social-icons li {
+    display: block; /* Mostrar cada icono en su propia línea */
+    margin-bottom: 10px;
+    animation: fadeInSocial 1s ease-in-out;
+}
+
+.social-icons li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons li a:hover {
+    color: #0044cc;
+    transform: scale(1.1);
+}
+
+.social-icons li a i {
+    margin-right: 8px;
+    font-size: 20px;
+}
+
+/* Animaciones */
+@keyframes fadeInFooter {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInColumn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInSocial {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Media Queries para pantallas móviles */
+@media (max-width: 768px) {
+    .footer-columns {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-column {
+        width: 90%; /* Las columnas ocuparán más espacio en móviles */
+        margin-bottom: 20px; /* Separación entre las columnas */
+    }
+
+    .footer-column h3 {
+        text-align: center;
+    }
+
+    .social-icons li a {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-column h3 {
+        font-size: 16px; /* Tamaño más pequeño para pantallas muy pequeñas */
+    }
+
+    .footer-column p, .footer-column li {
+        font-size: 12px;
+    }
+
+    .social-icons li a i {
+        font-size: 18px; /* Ajustamos el tamaño de los iconos en móviles */
+    }
+}

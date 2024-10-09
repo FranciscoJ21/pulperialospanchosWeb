@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="img/11.jpg">
+    <title>Bebidas</title>
+    <style>
+        /* Nueva animación para el título H1 */
+        h1 {
+            font-size: 46px;
+            color: rgb(1, 18, 1);
+            background: linear-gradient(45deg, #f093fb, #f5576c, #4facfe, #00f2fe);
+            text-align: center;
+            margin: 36px 0;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 4px solid rgb(109, 0, 128);
+            animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: rgb(113, 0, 128); }
+        }
+
+        h1:hover {
+            color: rgb(0, 17, 0);
+            transform: scale(1.1);
+            transition: transform 0.6s ease, color 0.6s ease;
+            text-shadow: 0 0 15px rgba(107, 0, 128, 0.5);
+        }
+
+        .productos-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .producto {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            width: 220px;
+            height: auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: visible;
+            min-height: 350px;
+        }
+
+        .producto img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .producto img:hover {
+            transform: scale(1.2);
+        }
+
+        .producto:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 128, 0, 0.3);
+        }
+
+        .producto p {
+            font-size: 16px;
+            color: #333;
+            margin: 0;
+            z-index: 1;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .producto:hover p {
+            color: green;
+        }
+
+        /* Estilos para el modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 50%;
+            top: 50%;
+            transform: translate(-45%, -45%);
+            width: 36%; /* Ajustamos el tamaño para que sea más pequeño */
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+        }
+
+        .modal-content img {
+            max-width: 100%;
+            height: auto;
+            transition: transform 0.2s ease;
+        }
+
+        .modal-content img:hover {
+            transform: scale(1.05); /* Efecto hover más ligero */
+        }
+
+        .close {
+            position: absolute;
+            top: 5px; /* Ajustamos para que esté dentro del recuadro */
+            right: 10px;
+            font-size: 25px;
+            color: #090101;
+            cursor: pointer;
+        }
+
+        /* Estilos para la barra de navegación */
+        .navbar {
+            position: relative;
+            z-index: 1001;
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <div class="navbar">
+        <div class="logo-text">
+            <img src="img/11.jpg" alt="Logo">
+            <span class="store-name">Pulpería Los Panchos</span>
+        </div>
+        <div class="menu-icon" id="menu-icon">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <ul class="menu">
+            <li><a href="index.html">Inicio</a></li>
+            <li class="dropdown">
+                <a href="#">Categorías</a>
+                <ul class="submenu">
+                    <li><a href="bebidas.html">Bebidas</a></li>
+                    <li><a href="carnes.html">Carnes</a></li>
+                    <li><a href="verduras.html">Verduras</a></li>
+                    <li><a href="snacks.html">Snacks</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="sobre.html">Sobre Nosotros</a>
+            </li>
+            <li><a href="#">Contáctenos</a></li>
+        </ul>
+    </div>
+
+    <h1>Bebidas</h1>
+    <div class="productos-container">
+        <div class="producto">
+            <img src="img/cocacola.webp" alt="Refresco Coca Cola Sin Azúcar 1.5 Lt">
+            <p>Refresco Coca Cola Sin Azúcar 1.5 Lt</p>
+        </div>
+        <div class="producto">
+            <img src="img/ba.webp" alt="Refresco Tropical Banana 500 Ml">
+            <p>Refresco Tropical Banana 500 Ml</p>
+        </div>
+        <div class="producto">
+            <img src="img/2l.webp" alt="Refresco Coca Cola Original 2 Lt">
+            <p>Refresco Coca Cola Original 2 Lt</p>
+        </div>
+        <div class="producto">
+            <img src="img/1.1l.webp" alt="Refresco Coca Cola Original 1.1 Lt">
+            <p>Refresco Coca Cola Original 1.1 Lt</p>
+        </div>
+        <div class="producto">
+            <img src="img/pep.webp" alt="Refresco Pepsi Lata 355 Ml">
+            <p>Refresco Pepsi Lata 355 Ml</p>
+        </div>
+        <div class="producto">
+            <img src="img/naranja.webp" alt="Jugo Sula De Naranja 473 Ml">
+            <p>Jugo Sula De Naranja 473 Ml</p>
+        </div>
+        <div class="producto">
+            <img src="img/gatorade.webp" alt="Bebida Isotónica Gatorade Sport Uva 600 Ml">
+            <p>Gatorade, 600 ml</p>
+        </div>
+        <div class="producto">
+            <img src="img/jugo.webp" alt="Jugo Leyde De Naranja Sin Pulpa 473 Ml">
+            <p>Jugo Leyde De Naranja Sin Pulpa 473 Ml</p>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <img src="" alt="Producto Ampliado">
+            <p id="product-description"></p>
+        </div>
+    </div>
+
+    <script>
+        // Seleccionamos el modal y su contenido
+        var modal = document.getElementById("modal");
+        var modalImg = document.querySelector(".modal-content img");
+        var productDescription = document.getElementById("product-description");
+        var closeBtn = document.querySelector(".close");
+
+        // Añadimos el evento a las imágenes de productos
+        var products = document.querySelectorAll(".producto img");
+
+        products.forEach(function(img) {
+            img.addEventListener("click", function() {
+                modal.style.display = "flex";
+                modalImg.src = this.src;
+                productDescription.textContent = this.alt;
+            });
+        });
+
+        // Cerrar el modal al hacer clic en la 'X'
+        closeBtn.addEventListener("click", function() {
+            modal.style.display = "none";
+        });
+
+        // Cerrar el modal al hacer clic fuera de la imagen
+        window.addEventListener("click", function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>
