@@ -91,56 +91,85 @@
             color: green;
         }
 
-        /* Estilos para el modal */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 999;
-            left: 50%;
-            top: 50%;
-            transform: translate(-45%, -45%);
-            width: 36%; /* Ajustamos el tamaño para que sea más pequeño */
-            background-color: rgba(0, 0, 0, 0.8);
-            justify-content: center;
-            align-items: center;
-            padding: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
-        }
+      /* Estilos para el modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 50%;
+    top: 50%;
+    transform: translate(-45%, -45%);
+    width: 90%; /* Cambiamos el ancho al 90% para pantallas pequeñas */
+    max-width: 450px; /* Ancho máximo para pantallas más grandes */
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    max-height: 90%; /* Limitar la altura del modal para evitar desbordamiento */
+    overflow-y: auto; /* Agregar scroll si el contenido es demasiado largo */
+}
 
-        .modal-content {
-            background-color: #fff;
-            padding: 15px;
-            border-radius: 10px;
-            width: 100%;
-            text-align: center;
-            position: relative;
-        }
+/* Modal content */
+.modal-content {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+}
 
-        .modal-content img {
-            max-width: 100%;
-            height: auto;
-            transition: transform 0.2s ease;
-        }
+/* Imagen dentro del modal */
+.modal-content img {
+    max-width: 100%;
+    transition: transform 0.2s ease;
+}
 
-        .modal-content img:hover {
-            transform: scale(1.05); /* Efecto hover más ligero */
-        }
+/* Efecto hover en la imagen */
+.modal-content img:hover {
+    transform: scale(1.05); /* Efecto hover más ligero */
+}
 
-        .close {
-            position: absolute;
-            top: 5px; /* Ajustamos para que esté dentro del recuadro */
-            right: 10px;
-            font-size: 25px;
-            color: #090101;
-            cursor: pointer;
-        }
+/* Botón de cerrar */
+.close {
+    position: absolute;
+    top: 10px; /* Ajustamos para que siempre esté dentro del recuadro */
+    right: 10px;
+    font-size: 25px;
+    color: #090101;
+    cursor: pointer;
+}
 
-        /* Estilos para la barra de navegación */
-        .navbar {
-            position: relative;
-            z-index: 1001;
-        }
+/* Estilos para la barra de navegación */
+.navbar {
+    position: relative;
+    z-index: 1001;
+}
+
+/* Media queries para ajustar en pantallas pequeñas */
+@media (max-width: 768px) {
+    .modal {
+        width: 100%; /* Ancho completo en pantallas pequeñas */
+     
+        top: 0;
+        left: 0;
+        transform: none; /* Quitamos el translate */
+        border-radius: 0; /* Sin bordes redondeados en pantalla completa */
+    }
+
+    .modal-content {
+     
+        max-height: 100%; /* Aseguramos que el contenido no se desborde */
+    }
+
+    .close {
+        top: 15px; /* Ajustamos la posición de la "X" para pantallas pequeñas */
+        right: 15px;
+    }
+}
+
     </style>
 </head>
 <body>
